@@ -1,0 +1,1205 @@
+<gazebo version='1.2'>
+  <model name='nao'>
+    <link name='base_link'>
+      <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.004130 0.000090 0.043420 0.000000 -0.000000 0.000000</pose>
+        <mass>1.049560</mass>
+        <inertia>
+          <ixx>0.007041</ixx>
+          <ixy>0.000014</ixy>
+          <ixz>-0.000033</ixz>
+          <iyy>0.006877</iyy>
+          <iyz>-0.000023</iyz>
+          <izz>0.001628</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_geom_Torso'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/Torso.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual_Torso'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/Torso.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <link name='Neck'>
+      <pose>0.000000 0.000000 0.126500 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.000010 0.000140 -0.027420 0.000000 -0.000000 0.000000</pose>
+        <mass>0.064420</mass>
+        <inertia>
+          <ixx>0.000123</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>-0.000000</ixz>
+          <iyy>0.000124</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000006</izz>
+        </inertia>
+      </inertial>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='HeadYaw' type='revolute'>
+      <child>Neck</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.000000 0.000000 1.000000</xyz>
+        <limit>
+          <lower>-2.085700</lower>
+          <upper>2.085700</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='Head'>
+      <pose>0.000000 0.000000 0.126500 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.001120 0.000030 0.052580 0.000000 -0.000000 0.000000</pose>
+        <mass>0.605330</mass>
+        <inertia>
+          <ixx>0.004305</ixx>
+          <ixy>0.000009</ixy>
+          <ixz>0.000005</ixz>
+          <iyy>0.004165</iyy>
+          <iyz>-0.000029</iyz>
+          <izz>0.000986</izz>
+        </inertia>
+      </inertial>
+      <collision name='Head_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/Head.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Head_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/Head.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='HeadPitch' type='revolute'>
+      <child>Head</child>
+      <parent>Neck</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.672000</lower>
+          <upper>0.514900</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LPelvis'>
+      <pose>0.000000 0.050000 -0.085000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.007810 -0.011140 0.026610 0.000000 -0.000000 0.000000</pose>
+        <mass>0.069810</mass>
+        <inertia>
+          <ixx>0.000140</ixx>
+          <ixy>0.000001</ixy>
+          <ixz>-0.000002</ixz>
+          <iyy>0.000155</iyy>
+          <iyz>0.000003</iyz>
+          <izz>0.000076</izz>
+        </inertia>
+      </inertial>
+      <collision name='LPelvis_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LPelvis.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LPelvis_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LPelvis.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LHipYawPitch' type='revolute'>
+      <child>LPelvis</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.000000 0.707106 -0.707106</xyz>
+        <limit>
+          <lower>-1.145300</lower>
+          <upper>0.740810</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LHip'>
+      <pose>0.000000 0.050000 -0.085000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.015490 0.000290 -0.005150 0.000000 -0.000000 0.000000</pose>
+        <mass>0.130530</mass>
+        <inertia>
+          <ixx>0.000031</ixx>
+          <ixy>-0.000001</ixy>
+          <ixz>0.000006</ixz>
+          <iyy>0.000133</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000119</izz>
+        </inertia>
+      </inertial>
+      <collision name='LHip_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LHip.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LHip_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LHip.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LHipRoll' type='revolute'>
+      <child>LHip</child>
+      <parent>LPelvis</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.379472</lower>
+          <upper>0.790477</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LThigh'>
+      <pose>0.000000 0.050000 -0.085000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.001380 0.002210 -0.053730 0.000000 -0.000000 0.000000</pose>
+        <mass>0.389680</mass>
+        <inertia>
+          <ixx>0.002764</ixx>
+          <ixy>0.000002</ixy>
+          <ixz>0.000056</ixz>
+          <iyy>0.002717</iyy>
+          <iyz>-0.000008</iyz>
+          <izz>0.000306</izz>
+        </inertia>
+      </inertial>
+      <collision name='LThigh_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LThigh.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LThigh_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LThigh.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LHipPitch' type='revolute'>
+      <child>LThigh</child>
+      <parent>LHip</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-1.773910</lower>
+          <upper>0.484090</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LTibia'>
+      <pose>0.000000 0.050000 -0.185000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.004530 0.002250 -0.049360 0.000000 -0.000000 0.000000</pose>
+        <mass>0.291420</mass>
+        <inertia>
+          <ixx>0.001894</ixx>
+          <ixy>0.000004</ixy>
+          <ixz>-0.000029</ixz>
+          <iyy>0.001845</iyy>
+          <iyz>0.000007</iyz>
+          <izz>0.000201</izz>
+        </inertia>
+      </inertial>
+      <collision name='LTibia_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LTibia.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LTibia_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LTibia.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LKneePitch' type='revolute'>
+      <child>LTibia</child>
+      <parent>LThigh</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.092346</lower>
+          <upper>2.112530</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LAnkle'>
+      <pose>0.000000 0.050000 -0.287900 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.000450 0.000290 0.006850 0.000000 -0.000000 0.000000</pose>
+        <mass>0.134160</mass>
+        <inertia>
+          <ixx>0.000045</ixx>
+          <ixy>-0.000000</ixy>
+          <ixz>0.000004</ixz>
+          <iyy>0.000081</iyy>
+          <iyz>0.000000</iyz>
+          <izz>0.000055</izz>
+        </inertia>
+      </inertial>
+      <collision name='LAnkle_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LAnkle.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LAnkle_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LAnkle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LAnklePitch' type='revolute'>
+      <child>LAnkle</child>
+      <parent>LTibia</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-1.189520</lower>
+          <upper>0.922747</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LFeet'>
+      <pose>0.000000 0.050000 -0.287900 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.025420 0.003300 -0.032390 0.000000 -0.000000 0.000000</pose>
+        <mass>0.161840</mass>
+        <inertia>
+          <ixx>0.000441</ixx>
+          <ixy>0.000008</ixy>
+          <ixz>0.000006</ixz>
+          <iyy>0.000919</iyy>
+          <iyz>0.000001</iyz>
+          <izz>0.000632</izz>
+        </inertia>
+      </inertial>
+      <collision name='LFeet_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LFeet.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LFeet_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LFeet.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LAnkleRoll' type='revolute'>
+      <child>LFeet</child>
+      <parent>LAnkle</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.397880</lower>
+          <upper>0.769001</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LShoulder'>
+      <pose>0.000000 0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.001650 -0.026630 0.000140 0.000000 -0.000000 0.000000</pose>
+        <mass>0.075040</mass>
+        <inertia>
+          <ixx>0.000138</ixx>
+          <ixy>0.000005</ixy>
+          <ixz>0.000000</ixz>
+          <iyy>0.000014</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000140</izz>
+        </inertia>
+      </inertial>
+      <collision name='LShoulder_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LShoulder.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LShoulder_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LShoulder.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LShoulderPitch' type='revolute'>
+      <child>LShoulder</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-2.085700</lower>
+          <upper>2.085700</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LBicep'>
+      <pose>0.000000 0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.024550 0.005630 0.003300 0.000000 -0.000000 0.000000</pose>
+        <mass>0.157770</mass>
+        <inertia>
+          <ixx>0.000101</ixx>
+          <ixy>-0.000025</ixy>
+          <ixz>-0.000014</ixz>
+          <iyy>0.000468</iyy>
+          <iyz>0.000000</iyz>
+          <izz>0.000442</izz>
+        </inertia>
+      </inertial>
+      <collision name='LBicep_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LBicep.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LBicep_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LBicep.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LShoulderRoll' type='revolute'>
+      <child>LBicep</child>
+      <parent>LShoulder</parent>
+      <axis>
+        <xyz>0.000000 0.000000 1.000000</xyz>
+        <limit>
+          <lower>-0.314200</lower>
+          <upper>1.326500</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LElbow'>
+      <pose>0.105000 0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.027440 0.000000 -0.000140 0.000000 -0.000000 0.000000</pose>
+        <mass>0.064830</mass>
+        <inertia>
+          <ixx>0.000006</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>0.000000</ixz>
+          <iyy>0.000124</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000125</izz>
+        </inertia>
+      </inertial>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LElbowYaw' type='revolute'>
+      <child>LElbow</child>
+      <parent>LBicep</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-2.085700</lower>
+          <upper>2.085700</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LForeArm'>
+      <pose>0.105000 0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.025560 0.002810 0.000760 0.000000 -0.000000 0.000000</pose>
+        <mass>0.077610</mass>
+        <inertia>
+          <ixx>0.000026</ixx>
+          <ixy>0.000003</ixy>
+          <ixz>0.000002</ixz>
+          <iyy>0.000140</iyy>
+          <iyz>0.000000</iyz>
+          <izz>0.000139</izz>
+        </inertia>
+      </inertial>
+      <collision name='LForeArm_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LForeArm.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LForeArm_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LForeArm.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LElbowRoll' type='revolute'>
+      <child>LForeArm</child>
+      <parent>LElbow</parent>
+      <axis>
+        <xyz>0.000000 0.000000 1.000000</xyz>
+        <limit>
+          <lower>-1.544600</lower>
+          <upper>-0.034900</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='LHand'>
+      <pose>0.160950 0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.034340 -0.000880 0.003080 0.000000 -0.000000 0.000000</pose>
+        <mass>0.185330</mass>
+        <inertia>
+          <ixx>0.000072</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>-0.000003</ixz>
+          <iyy>0.000576</iyy>
+          <iyz>0.000003</iyz>
+          <izz>0.000571</izz>
+        </inertia>
+      </inertial>
+      <collision name='LHand_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LHand.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='LHand_geom_LFinger'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LFinger.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LHand_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LHand.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='LHand_visual_LFinger'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/LFinger.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='LWristYaw' type='revolute'>
+      <child>LHand</child>
+      <parent>LForeArm</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-1.823800</lower>
+          <upper>1.823800</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RPelvis'>
+      <pose>0.000000 -0.050000 -0.085000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.007660 0.012000 0.027160 0.000000 -0.000000 0.000000</pose>
+        <mass>0.071180</mass>
+        <inertia>
+          <ixx>0.000153</ixx>
+          <ixy>-0.000002</ixy>
+          <ixz>-0.000002</ixz>
+          <iyy>0.000162</iyy>
+          <iyz>-0.000005</iyz>
+          <izz>0.000081</izz>
+        </inertia>
+      </inertial>
+      <collision name='RPelvis_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RPelvis.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RPelvis_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RPelvis.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RHipYawPitch' type='revolute'>
+      <child>RPelvis</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.000000 0.707106 0.707106</xyz>
+        <limit>
+          <lower>-1.145300</lower>
+          <upper>0.740810</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RHip'>
+      <pose>0.000000 -0.050000 -0.085000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.015490 -0.000290 -0.005160 0.000000 -0.000000 0.000000</pose>
+        <mass>0.130530</mass>
+        <inertia>
+          <ixx>0.000031</ixx>
+          <ixy>0.000001</ixy>
+          <ixz>0.000006</ixz>
+          <iyy>0.000133</iyy>
+          <iyz>0.000000</iyz>
+          <izz>0.000119</izz>
+        </inertia>
+      </inertial>
+      <collision name='RHip_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RHip.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RHip_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RHip.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RHipRoll' type='revolute'>
+      <child>RHip</child>
+      <parent>RPelvis</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.738321</lower>
+          <upper>0.414754</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RThigh'>
+      <pose>0.000000 -0.050000 -0.085000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.001390 -0.002250 -0.053740 0.000000 -0.000000 0.000000</pose>
+        <mass>0.389760</mass>
+        <inertia>
+          <ixx>0.002765</ixx>
+          <ixy>-0.000002</ixy>
+          <ixz>0.000057</ixz>
+          <iyy>0.002719</iyy>
+          <iyz>0.000008</iyz>
+          <izz>0.000307</izz>
+        </inertia>
+      </inertial>
+      <collision name='RThigh_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RThigh.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RThigh_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RThigh.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RHipPitch' type='revolute'>
+      <child>RThigh</child>
+      <parent>RHip</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-1.772310</lower>
+          <upper>0.485624</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RTibia'>
+      <pose>0.000000 -0.050000 -0.185000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.003940 -0.002210 -0.049380 0.000000 -0.000000 0.000000</pose>
+        <mass>0.291630</mass>
+        <inertia>
+          <ixx>0.001895</ixx>
+          <ixy>-0.000003</ixy>
+          <ixz>-0.000029</ixz>
+          <iyy>0.001844</iyy>
+          <iyz>-0.000007</iyz>
+          <izz>0.000197</izz>
+        </inertia>
+      </inertial>
+      <collision name='RTibia_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RTibia.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RTibia_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RTibia.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RKneePitch' type='revolute'>
+      <child>RTibia</child>
+      <parent>RThigh</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.103083</lower>
+          <upper>2.120200</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RAnkle'>
+      <pose>0.000000 -0.050000 -0.287900 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.000450 -0.000300 0.006840 0.000000 -0.000000 0.000000</pose>
+        <mass>0.134150</mass>
+        <inertia>
+          <ixx>0.000045</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>0.000004</ixz>
+          <iyy>0.000081</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000055</izz>
+        </inertia>
+      </inertial>
+      <collision name='RAnkle_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RAnkle.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RAnkle_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RAnkle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RAnklePitch' type='revolute'>
+      <child>RAnkle</child>
+      <parent>RTibia</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-1.186450</lower>
+          <upper>0.932056</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RFeet'>
+      <pose>0.000000 -0.050000 -0.287900 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.025400 -0.003320 -0.032390 0.000000 -0.000000 0.000000</pose>
+        <mass>0.161710</mass>
+        <inertia>
+          <ixx>0.000441</ixx>
+          <ixy>-0.000008</ixy>
+          <ixz>0.000006</ixz>
+          <iyy>0.000917</iyy>
+          <iyz>-0.000001</iyz>
+          <izz>0.000631</izz>
+        </inertia>
+      </inertial>
+      <collision name='RFeet_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RFeet.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RFeet_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RFeet.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RAnkleRoll' type='revolute'>
+      <child>RFeet</child>
+      <parent>RAnkle</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.785875</lower>
+          <upper>0.388676</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RShoulder'>
+      <pose>0.000000 -0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.001650 0.026630 0.000140 0.000000 -0.000000 0.000000</pose>
+        <mass>0.075040</mass>
+        <inertia>
+          <ixx>0.000138</ixx>
+          <ixy>-0.000001</ixy>
+          <ixz>0.000000</ixz>
+          <iyy>0.000014</iyy>
+          <iyz>0.000000</iyz>
+          <izz>0.000140</izz>
+        </inertia>
+      </inertial>
+      <collision name='RShoulder_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RShoulder.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RShoulder_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RShoulder.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RShoulderPitch' type='revolute'>
+      <child>RShoulder</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0.000000 1.000000 0.000000</xyz>
+        <limit>
+          <lower>-2.085700</lower>
+          <upper>2.085700</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RBicep'>
+      <pose>0.000000 -0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.024290 -0.009520 0.003200 0.000000 -0.000000 0.000000</pose>
+        <mass>0.157940</mass>
+        <inertia>
+          <ixx>0.000126</ixx>
+          <ixy>0.000040</ixy>
+          <ixz>-0.000014</ixz>
+          <iyy>0.000462</iyy>
+          <iyz>0.000007</iyz>
+          <izz>0.000462</izz>
+        </inertia>
+      </inertial>
+      <collision name='RBicep_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RBicep.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RBicep_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RBicep.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RShoulderRoll' type='revolute'>
+      <child>RBicep</child>
+      <parent>RShoulder</parent>
+      <axis>
+        <xyz>0.000000 0.000000 1.000000</xyz>
+        <limit>
+          <lower>-1.326500</lower>
+          <upper>0.314200</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RElbow'>
+      <pose>0.105000 -0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>-0.027440 0.000000 -0.000140 0.000000 -0.000000 0.000000</pose>
+        <mass>0.064830</mass>
+        <inertia>
+          <ixx>0.000006</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>0.000000</ixz>
+          <iyy>0.000124</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000125</izz>
+        </inertia>
+      </inertial>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RElbowYaw' type='revolute'>
+      <child>RElbow</child>
+      <parent>RBicep</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-2.085700</lower>
+          <upper>2.085700</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RForeArm'>
+      <pose>0.105000 -0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.025520 -0.002810 0.000900 0.000000 -0.000000 0.000000</pose>
+        <mass>0.077780</mass>
+        <inertia>
+          <ixx>0.000026</ixx>
+          <ixy>-0.000003</ixy>
+          <ixz>0.000001</ixz>
+          <iyy>0.000140</iyy>
+          <iyz>-0.000000</iyz>
+          <izz>0.000139</izz>
+        </inertia>
+      </inertial>
+      <collision name='RForeArm_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RForeArm.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RForeArm_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RForeArm.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RElbowRoll' type='revolute'>
+      <child>RForeArm</child>
+      <parent>RElbow</parent>
+      <axis>
+        <xyz>0.000000 0.000000 1.000000</xyz>
+        <limit>
+          <lower>0.034900</lower>
+          <upper>1.544600</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='RHand'>
+      <pose>0.160950 -0.098000 0.100000 0.000000 -0.000000 0.000000</pose>
+      <inertial>
+        <pose>0.034340 -0.000880 0.003080 0.000000 -0.000000 0.000000</pose>
+        <mass>0.185330</mass>
+        <inertia>
+          <ixx>0.000072</ixx>
+          <ixy>0.000000</ixy>
+          <ixz>-0.000003</ixz>
+          <iyy>0.000576</iyy>
+          <iyz>0.000003</iyz>
+          <izz>0.000571</izz>
+        </inertia>
+      </inertial>
+      <collision name='RHand_geom'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RHand.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='RHand_geom_RFinger'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RFinger.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RHand_visual'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RHand.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='RHand_visual_RFinger'>
+        <pose>0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000</pose>
+        <geometry>
+          <mesh>
+            <scale>1.000000 1.000000 1.000000</scale>
+            <uri>model://nao_model/mesh/dae/RFinger.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0.000000</linear>
+        <angular>0.000000</angular>
+      </velocity_decay>
+    </link>
+    <joint name='RWristYaw' type='revolute'>
+      <child>RHand</child>
+      <parent>RForeArm</parent>
+      <axis>
+        <xyz>1.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-1.823800</lower>
+          <upper>1.823800</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <static>0</static>
+    <plugin name='nao_gazebo_plugin' filename='libnaoGazeboPlugin.so'>
+      <alwaysOn>1</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <timeout>5</timeout>
+    </plugin>
+  </model>
+</gazebo>

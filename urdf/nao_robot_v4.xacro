@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+
+<!--
+ * Software License Agreement (BSD License)
+ *
+ *  Copyright (c) 2013-, Stefano Michieletto
+ *
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *   * Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *   * Redistributions in binary form must reproduce the above
+ *     copyright notice, this list of conditions and the following
+ *     disclaimer in the documentation and/or other materials provided
+ *     with the distribution.
+ *   * Neither the name of the copyright holder(s) nor the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ *
+ * nao_robot_v4.xacro
+ * Authors: Davide Zanin [davidezanin@gmail.com]
+ *			Roberto Bortoletto [roberto.bortoletto@dei.unipd.it]
+ * 			Stefano Michieletto [stefano.michieletto@dei.unipd.it]
+ *
+-->
+
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="nao">
+  
+	<xacro:property name="pi" value="3.1415926535897931"/>
+	<xacro:property name="pi_2" value="1.5707963267948966"/>
+
+	<!-- Macro for insert a link visualization -->
+	<xacro:macro name="insert_visualization" params="name nameMesh xyz">
+		<visual>
+			<origin xyz="${xyz}" rpy="0 0 0"/>
+			<geometry name="${name}_visual_geom">
+				<mesh filename="package://nao_description/mesh/stl/${nameMesh}.stl" scale="0.1 0.1 0.1"/> 			
+			</geometry>	
+		</visual>
+	</xacro:macro>
+	
+	<!-- Macro for insert a link collision -->
+	<xacro:macro name="insert_collision" params="name xyz size">
+		<collision>
+			<origin xyz="${xyz}" rpy="0 0 0" />
+			<geometry name="${name}_collision_geom">
+				<box size="${size}"/>
+			</geometry>
+		</collision>
+	</xacro:macro>
+  
+	<!-- MACRO FOR DEFINE LINK-->
+ 	<xacro:macro name="l" params="name xyz mass *inertia *visual *collision">
+		<link name="${name}">
+			<inertial>
+				<origin xyz="${xyz}" rpy="0 0 0" />
+				<mass value="${mass}" />
+				<xacro:insert_block name="inertia" />
+			</inertial>
+				<xacro:insert_block name="visual" />
+				<xacro:insert_block name="collision" />
+		</link>
+		<gazebo reference="${name}">
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+  	</xacro:macro>
+  	
+	 <xacro:macro name="l2" params="name xyz mass *inertia">
+		<link name="${name}">
+			<inertial>
+				<origin xyz="${xyz}" rpy="0 0 0" />
+				<mass value="${mass}" />
+				<xacro:insert_block name="inertia" />
+			</inertial>
+		</link>
+		<gazebo reference="${name}">
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+  	</xacro:macro>
+
+	<!-- MACRO FOR DEFINE JOINT-->
+ 	<xacro:macro name="j" params="name parent child lower upper *axis *origin">
+		<joint name="${name}" type="revolute" >
+			<limit lower="${lower}" upper="${upper}" effort="100.0" velocity="5" />
+			<parent link="${parent}" />
+			<child link="${child}" />
+			<dynamics damping="0" friction="25" />
+			<xacro:insert_block name="axis" />
+			<xacro:insert_block name="origin" />
+		</joint>
+	</xacro:macro>
+  	
+	<xacro:include filename="$(find nao_description)/urdf/nao_robot_v4_link.xacro" />
+	<xacro:include filename="$(find nao_description)/urdf/nao_robot_v4_joint.xacro" />
+	
+	<gazebo reference="RFeet">
+		<mu1 value="0.8" />
+		<mu2 value="0.8" />
+  	</gazebo>
+  	
+	<gazebo reference="LFeet">
+		<mu1 value="0.8" />
+		<mu2 value="0.8" />
+	</gazebo>
+  
+	<gazebo>
+		<plugin name="nao_gazebo_plugin" filename="libnao_gazebo_plugin.so">
+			<ns>nao</ns>
+			<robotSimType>nao</robotSimType>
+		</plugin>
+	</gazebo>
+
+</robot>

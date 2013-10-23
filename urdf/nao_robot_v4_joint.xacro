@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+
+<!--
+ * Software License Agreement (BSD License)
+ *
+ *  Copyright (c) 2013-, Stefano Michieletto
+ *
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *   * Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *   * Redistributions in binary form must reproduce the above
+ *     copyright notice, this list of conditions and the following
+ *     disclaimer in the documentation and/or other materials provided
+ *     with the distribution.
+ *   * Neither the name of the copyright holder(s) nor the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ *
+ * nao_robot_v4_joint.xacro
+ * Authors: Davide Zanin [davidezanin@gmail.com]
+ *			Roberto Bortoletto [roberto.bortoletto@dei.unipd.it]
+ * 			Stefano Michieletto [stefano.michieletto@dei.unipd.it]
+ *
+-->
+
+<!-- NAO JOINT DEFINITION -->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<!-- BASE JOINTS -->
+	
+	<!-- Dummy Base Joint -->
+	<joint name="base_joint" type="fixed">
+		<child link="torso"/>
+		<parent link="base_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
+	
+	<!-- Dummy torso joint -->
+	<joint name="torso_joint" type="fixed">
+		<child link="Chest"/>
+		<parent link="base_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>	
+	
+	<!-- END BASE JOINTS -->
+	
+	
+	<!-- HEAD JOINTS -->
+	
+	<!-- HeadYaw -->
+	<xacro:j name="HeadYaw" parent="Chest" child="Neck" lower="-2.0857" upper="2.0857">
+		<axis xyz="0 0 1" />
+		<origin xyz="0 0 0.122" rpy="0 0 0" />
+	</xacro:j>
+	
+	<!-- HeadPitch -->
+	<xacro:j name="HeadPitch" parent="Neck" child="Head" lower="-0.6720" upper="0.5149">
+		<axis xyz="0 1 0" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:j> 
+	
+	<!-- Dummy Gaze Joint -->
+  	<joint name="gaze_joint" type="fixed">
+		<parent link="Head"/>
+		<child link="gaze"/>
+		<origin xyz="0.0539 0 0.05" />
+	</joint>
+  
+	<!-- Dummy CameraTop Joint -->
+  	<joint name="CameraTop" type="fixed">
+		<parent link="Head"/>
+		<child link="CameraTop_frame"/>
+		<origin xyz="0.05871 0 0.06364" rpy="-1.59174 0 -${pi_2}" />
+  	</joint>
+	
+	<!-- Dummy CameraBottom Joint -->
+  	<joint name="CameraBottom" type="fixed">
+		<parent link="Head"/>
+		<child link="CameraBottom_frame"/>
+		<origin xyz="0.05071 0 0.01774" rpy="-2.263692 0 -${pi_2}" />
+  	</joint>
+	
+	<!-- END HEAD JOINTS -->
+  
+
+  	<!-- ARM JOINTS -->
+  	<xacro:macro name="arm_joints" params="side lower_side reflect">
+  
+		<!-- ShoulderPitch -->
+		<xacro:j name="${side}ShoulderPitch" parent="Chest" child="${side}Shoulder" lower="-2.0857" upper="2.0857">
+			<axis xyz="0 1 0" />
+			<origin xyz="0 ${reflect*-0.08} 0.1" rpy="0 0 0" />
+		</xacro:j>	
+
+		<!-- ElbowYaw -->
+		<xacro:j name="${side}ElbowYaw" parent="${side}Biceps" child="${side}Elbow" lower="-2.0857" upper="2.0857">
+			<axis xyz="1 0 0"/>
+			<origin xyz="0.105 ${reflect*-0.03} 0" rpy="0 0 0"/>
+		</xacro:j>	
+
+		<!-- WristYaw 0.05595-->
+		<xacro:j name="${side}WristYaw" parent="${side}ForeArm" child="${side}Hand" lower="-1.8238" upper="1.8238">
+			<axis xyz="1 0 0"/>			
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:j>
+		
+		<!-- Dummy Wrist Joint -->
+		<joint name="${lower_side}_wrist_joint" type="fixed">
+			<parent link="${side}ForeArm"/>
+			<child link="${lower_side}_wrist"/>
+			<origin xyz="0 0 0" />
+		</joint>
+		
+		<!-- Dummy Gripper Joint -->
+		<joint name="${lower_side}_gripper_joint" type="fixed">
+			<parent link="${side}Hand"/>
+			<child link="${lower_side}_gripper"/>
+			<origin xyz="0 0 0" />
+		</joint>
+		  
+  	</xacro:macro> 
+  	
+  	<!-- LShoulderRoll -->
+	<xacro:j name="LShoulderRoll" parent="LShoulder" child="LBiceps" lower="-0.3142" upper="1.3265">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0.009 0" rpy="0 0 0"/>
+	</xacro:j>		
+
+	<!-- RShoulderRoll -->
+	<xacro:j name="RShoulderRoll" parent="RShoulder" child="RBiceps" lower="-1.3265" upper="0.3142">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 -0.009 0" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- LElbowRoll -->
+	<xacro:j name="LElbowRoll" parent="LElbow" child="LForeArm" lower="-1.5446" upper="-0.0349">
+		<axis xyz="0 0 1" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:j>
+
+	<!-- RElbowRoll -->
+	<xacro:j name="RElbowRoll" parent="RElbow" child="RForeArm" lower="0.0349" upper="1.5446">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- Right Fingers -->
+	<joint name="RGripper_1" type="fixed">
+		<parent link="RHand"/>
+		<child link="RFinger_1"/>
+		<origin xyz="0.125 -0.015 -0.003" rpy="0 0 0"/>
+	</joint>
+	<joint name="RGripper_4" type="fixed">
+		<parent link="RHand"/>
+		<child link="RFinger_4"/>
+		<origin xyz="0.125 0.008 -0.003" rpy="0 0 0"/>
+	</joint>
+	<joint name="RGripper_7" type="fixed">
+		<parent link="RHand"/>
+		<child link="RFinger_7"/>
+		<origin xyz="0.105 -0.003 -0.026" rpy="0 0 0"/>
+	</joint>
+	
+	<joint name="RGripper_2" type="fixed">
+		<parent link="RFinger_1"/>
+		<child link="RFinger_2"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<joint name="RGripper_5" type="fixed">
+		<parent link="RFinger_4"/>
+		<child link="RFinger_5"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<joint name="RGripper_8" type="fixed">
+		<parent link="RFinger_7"/>
+		<child link="RFinger_8"/>
+		<origin xyz="0.007 0 -0.0128" rpy="0 0 0"/>
+	</joint>
+	
+	<joint name="RGripper_3" type="fixed">
+		<parent link="RFinger_2"/>
+		<child link="RFinger_3"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<joint name="RGripper_6" type="fixed">
+		<parent link="RFinger_5"/>
+		<child link="RFinger_6"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<!-- End Right Fingers -->
+
+
+	<!-- Left Fingers -->
+	<joint name="LGripper_1" type="fixed">
+		<parent link="LHand"/>
+		<child link="LFinger_1"/>
+		<origin xyz="0.125 0.015 -0.003" rpy="0 0 0"/>
+	</joint>
+	<joint name="LGripper_4" type="fixed">
+		<parent link="LHand"/>
+		<child link="LFinger_4"/>
+		<origin xyz="0.125 -0.008 -0.003" rpy="0 0 0"/>
+	</joint>
+	<joint name="LGripper_7" type="fixed">
+		<parent link="LHand"/>
+		<child link="LFinger_7"/>
+		<origin xyz="0.105 0.003 -0.026" rpy="0 0 0"/>
+	</joint>
+	
+	<joint name="LGripper_2" type="fixed">
+		<parent link="LFinger_1"/>
+		<child link="LFinger_2"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<joint name="LGripper_5" type="fixed">
+		<parent link="LFinger_4"/>
+		<child link="LFinger_5"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<joint name="LGripper_8" type="fixed">
+		<parent link="LFinger_7"/>
+		<child link="LFinger_8"/>
+		<origin xyz="0.007 0 -0.0128" rpy="0 0 0"/>
+	</joint>
+	
+	<joint name="LGripper_3" type="fixed">
+		<parent link="LFinger_2"/>
+		<child link="LFinger_3"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	
+	<joint name="LGripper_6" type="fixed">
+		<parent link="LFinger_5"/>
+		<child link="LFinger_6"/>
+		<origin xyz="0.015 0 0.001" rpy="0 0 0"/>
+	</joint>
+	<!-- End Left Fingers -->
+
+	<!-- Insert Arm Joitns -->
+  	<xacro:arm_joints side="L" lower_side="l" reflect="-1"/>
+  	<xacro:arm_joints side="R" lower_side="r" reflect="1"/>
+  	
+  	<!-- END ARM JOINTS -->  
+  
+
+	<!-- LEG JOINTS -->
+  
+	<!-- LHipYawPitch -->
+	<xacro:j name="LHipYawPitch" parent="Chest" child="LHip" lower="-1.145303" upper="0.740810">
+		<axis xyz="0 0.707106 -0.707106"/>
+		<origin xyz="0 0.05 -0.085" rpy="0 0 0"/>
+	</xacro:j>	
+
+	<!-- RHipYawPitch -->
+	<xacro:j name="RHipYawPitch" parent="Chest" child="RHip" lower="-1.145303" upper="0.740810">
+		<axis xyz="0 0.707106 0.707106"/>
+		<origin xyz="0 -0.05 -0.085" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- LHipRoll -->
+	<xacro:j name="LHipRoll" parent="LHip" child="LUpperThigh" lower="-0.379472" upper="0.790477">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+
+	<!-- RHipRoll -->
+	<xacro:j name="RHipRoll" parent="RHip" child="RUpperThigh" lower="-0.738321" upper="0.414754">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+
+	<!-- LHipPitch -->
+	<xacro:j name="LHipPitch" parent="LUpperThigh" child="LThigh" lower="-1.773912" upper="0.484090">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- RHipPitch -->
+	<xacro:j name="RHipPitch" parent="RUpperThigh" child="RThigh" lower="-1.772308" upper="0.485624">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+
+	<!-- LKneePitch -->
+	<xacro:j name="LKneePitch" parent="LThigh" child="LShinebone" lower="-0.092346" upper="2.112528">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- RKneePitch -->
+	<xacro:j name="RKneePitch" parent="RThigh" child="RShinebone" lower="-0.103083" upper="2.120198">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- LAnklePitch -->
+	<xacro:j name="LAnklePitch" parent="LShinebone" child="LAnkle" lower="-1.189516" upper="0.922747">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+	</xacro:j>
+
+	<!-- RAnklePitch -->
+	<xacro:j name="RAnklePitch" parent="RShinebone" child="RAnkle" lower="-1.186448" upper="0.932056">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+	</xacro:j>
+
+	<!-- Dummy Ankle Joints -->
+	<joint name="r_ankle_joint" type="fixed">
+		<parent link="RAnkle"/>
+		<child link="r_ankle"/>
+		<origin xyz="0 0 0" />
+	</joint>
+	
+	<joint name="l_ankle_joint" type="fixed">
+		<parent link="LAnkle"/>
+		<child link="l_ankle"/>
+		<origin xyz="0 0 0" />
+	</joint>
+	
+	<!-- LAnkleRoll -->
+	<xacro:j name="LAnkleRoll" parent="LAnkle" child="LFoot" lower="-0.397880" upper="0.769001">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+	
+	<!-- RAnkleRoll -->
+	<xacro:j name="RAnkleRoll" parent="RAnkle" child="RFoot" lower="-0.785875" upper="0.388676">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:j>
+
+	<!-- Dummy Sole Joints -->
+	<joint name="l_sole_joint" type="fixed">
+		<parent link="LFoot"/>
+		<child link="l_sole"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
+
+	<joint name="r_sole_joint" type="fixed">
+		<parent link="RFoot"/>
+		<child link="r_sole"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
+	
+	<!-- END LEG JOINTS -->
+</robot>

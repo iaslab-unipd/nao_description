@@ -1,3 +1,4 @@
+ #!/usr/bin/env python
  # Software License Agreement (BSD License)
  #
  #  Copyright (c) 2013-, Stefano Michieletto
@@ -37,28 +38,36 @@
  # 	    Stefano Michieletto [stefano.michieletto@dei.unipd.it]
  #
 
-import bpy 
+import bpy
+import os
+import roslib.packages
 
-# Keep a copy of user selection 
-bpy.ops.object.select_all(action="SELECT")
-sel_obs = bpy.context.selected_objects[:] 
+# Get the folder where the meshes will be saved
+mesh_dir = os.path.join(roslib.packages.get_pkg_dir('nao_description'), 'mesh', 'stl')
+if not os.path.isdir(mesh_dir):
+    os.makedirs(mesh_dir)
 
-for ob in sel_obs: 
-    
-    # Skip non-mesh objects 
-    if ob.type != 'MESH': 
-        continue 
+# Keep a copy of user selection
+bpy.ops.object.select_by_type(type="MESH")
+sel_obs = bpy.context.selected_objects[:]
 
-    # Clear selection    
-    bpy.ops.object.select_all(action="DESELECT") 
-    
-    # Select single object 
-    ob.select = True 
-    
-    # Export single object to STL 
-    bpy.ops.export_mesh.stl(filepath="~/nao_mesh/stl/" + ob.name + ".stl") 
-    
+for ob in bpy.data.objects:
+
+    # Skip non-mesh objects
+    if ob.type != 'MESH':
+        continue
+
+    # Clear selection
+    bpy.ops.object.select_all(action="DESELECT")
+
+    # Select single object
+    ob.select = True
+
+    # Export single object to STL
+    bpy.ops.export_mesh.stl(filepath=os.path.join(mesh_dir, ob.name + ".stl"))
+
 # Restore user selection 
-for ob in sel_obs: 
-    ob.select = True 
+bpy.ops.object.select_all(action="DESELECT")
+for ob in sel_obs:
+    ob.select = True
 bpy.context.scene.objects.active = ob

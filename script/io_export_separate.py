@@ -1,3 +1,4 @@
+ #!/usr/bin/env python
  # Software License Agreement (BSD License)
  #
  #  Copyright (c) 2013-, Stefano Michieletto
@@ -37,28 +38,53 @@
  # 	    Stefano Michieletto [stefano.michieletto@dei.unipd.it]
  #
 
-import bpy 
+# This script parses the nao-v4.blend file from Aldebaran robotics, parses it
+# into several .stl files to use with a URDF. It also decimates the meshes
+# to help with faster collision checking
 
-# Keep a copy of user selection 
-bpy.ops.object.select_all(action="SELECT")
-sel_obs = bpy.context.selected_objects[:] 
+import bpy
+import os
+import roslib.packages
 
-for ob in sel_obs: 
-    
-    # Skip non-mesh objects 
-    if ob.type != 'MESH': 
-        continue 
+# Get the folder where the meshes will be saved
+mesh_dir = os.path.join(roslib.packages.get_pkg_dir('nao_description'), 'mesh', 'stl')
+if not os.path.isdir(mesh_dir):
+    os.makedirs(mesh_dir)
 
-    # Clear selection    
-    bpy.ops.object.select_all(action="DESELECT") 
-    
-    # Select single object 
-    ob.select = True 
-    
-    # Export single object to STL 
-    bpy.ops.export_mesh.stl(filepath="~/nao_mesh/stl/" + ob.name + ".stl") 
-    
+# Keep a copy of user selection
+bpy.ops.object.select_by_type(type="MESH")
+sel_obs = bpy.context.selected_objects[:]
+
+for ob in bpy.data.objects:
+
+    # Skip non-mesh objects
+    if ob.type != 'MESH':
+        continue
+
+    # Clear selection
+    bpy.ops.object.select_all(action="DESELECT")
+
+    # Select single object
+    ob.hide = False
+    ob.select = True
+
+    # decimate the mesh
+    bpy.context.scene.objects.active = ob
+    bpy.ops.object.modifier_add(type='DECIMATE')
+    mod = ob.modifiers[0]
+    # TODO: can an automatic parameter be chosen ? 0.5 seems to work.
+    # It needs check with MoveIt! though to see if the modfied meshes create collisions
+    # It could also only be done only for some parts (like Head/Torso)
+    mod.ratio = 1.0
+
+    # Export single object to STL
+    bpy.ops.export_mesh.stl(filepath=os.path.join(mesh_dir, ob.name + ".stl"))
+
+    # remove the modifier to get back to normal once done
+    bpy.ops.object.modifier_remove(modifier=mod.name)
+
 # Restore user selection 
-for ob in sel_obs: 
-    ob.select = True 
+bpy.ops.object.select_all(action="DESELECT")
+for ob in sel_obs:
+    ob.select = True
 bpy.context.scene.objects.active = ob

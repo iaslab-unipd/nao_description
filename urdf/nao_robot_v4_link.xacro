@@ -55,7 +55,7 @@
 	<xacro:l name="Chest" xyz="0 0 0" mass="1.04956">
 		<inertia ixx="0.00704108" ixy="1.39215e-05" ixz="-3.30211e-05" iyy="0.00687677" iyz="-2.29779e-05" izz="0.00162821" />
 		<xacro:insert_visualization name="Chest" nameMesh="Chest" xyz="0 0 0.1"/>
-		<xacro:insert_collision name="Chest" xyz="0.008 0 0.035" size="0.111 0.192 0.23" />
+		<xacro:insert_collision name="Chest" nameMesh="Chest" xyz="0 0 0.1" />
 	</xacro:l>
 	
 	<!-- END BASE LINKS -->
@@ -67,14 +67,14 @@
 	<xacro:l name="Neck" xyz="0 0 0" mass="0.06442">
 		<inertia ixx="0.000123429" ixy="1.47981e-09" ixz="-6.76036e-10" iyy="0.000124435" iyz="-3.00245e-07" izz="5.535e-06" />
 		<xacro:insert_visualization name="Neck" nameMesh="Neck" xyz="0 0 -0.015" />
-		<xacro:insert_collision name="Neck" xyz="0 0 0" size="0 0 0" />
+		<xacro:insert_collision name="Neck" nameMesh="Neck" xyz="0 0 -0.015" />
 	</xacro:l>
 
 	<!-- Head link -->
 	<xacro:l name="Head" xyz="0 0 0" mass="0.60533">
 		<inertia ixx="0.00430483" ixy="8.7678e-06" ixz="5.33702e-06" iyy="0.00416541" iyz="-2.90031e-05" izz="0.000986496" />
 		<xacro:insert_visualization name="Head" nameMesh="Head" xyz="0 0 -0.028" />
-		<xacro:insert_collision name="Head" xyz="0 0 0" size="0.119 0.133 0.116" />
+		<xacro:insert_collision name="Head" nameMesh="Head" xyz="0 0 -0.028" />
 	</xacro:l>
 	
 	<!-- Dummy Gaze Link -->
@@ -99,28 +99,28 @@
 	<xacro:l name="RShoulder" xyz="0 0 0" mass="0.07504">
 		<inertia ixx="0.000137501" ixy="-1.2692e-06" ixz="6.04576e-09" iyy="1.43614e-05" iyz="2.99484e-07" izz="0.000139839" />
 		<xacro:insert_visualization name="RShoulder" nameMesh="RShoulderPadMobil.001" xyz="0.001 0.0798 0" />
-		<xacro:insert_collision name="RShoulder" xyz="-0.018 -0.007 0" size="0.061 0.057 0.082" />
+		<xacro:insert_collision name="RShoulder" nameMesh="RShoulderPadMobil.001" xyz="0.001 0.0798 0" />
 	</xacro:l>
 
 	<!-- LShoulder link -->
 	<xacro:l name="LShoulder" xyz="0 0 0" mass="0.07504">
 		<inertia ixx="0.000137501" ixy="5.32524e-06" ixz="6.04576e-09" iyy="1.43614e-05" iyz="-2.60044e-07" izz="0.000139839" />
 		<xacro:insert_visualization name="LShoulder" nameMesh="LShoulderPadMobile" xyz="0.001 -0.0798 0" />
-		<xacro:insert_collision name="LShoulder" xyz="-0.018 0.007 0" size="0.061 0.057 0.082" />
+		<xacro:insert_collision name="LShoulder" nameMesh="LShoulderPadMobile" xyz="0.001 -0.0798 0" />
 	</xacro:l>
 
 	<!-- RBicep link -->
 	<xacro:l name="RBiceps" xyz="0 0 0" mass="0.15794">
 		<inertia ixx="0.000126052" ixy="4.01691e-05" ixz="-1.37697e-05" iyy="0.000462379" iyz="7.2868e-06" izz="0.000462117" />
 		<xacro:insert_visualization name="RBiceps" nameMesh="RBiceps" xyz="0 0.085 0" />
-		<xacro:insert_collision name="RBiceps" xyz="0.052 -0.008 0.001" size="0.143 0.05 0.055" />
+		<xacro:insert_collision name="RBiceps" nameMesh="RBiceps" xyz="0 0.085 0" />
 	</xacro:l>
 
 	<!-- LBicep link -->
 	<xacro:l name="LBiceps" xyz="0 0 0" mass="0.15777">
 		<inertia ixx="0.000100619" ixy="-2.53381e-05" ixz="-1.4213e-05" iyy="0.000468325" iyz="4.71439e-07" izz="0.00044199" />
 		<xacro:insert_visualization name="LBiceps" nameMesh="LBiceps" xyz="0 -0.085 0" />
-		<xacro:insert_collision name="LBiceps" xyz="0.052 0.008 0.001" size="0.143 0.05 0.055" />
+		<xacro:insert_collision name="LBiceps" nameMesh="LBiceps" xyz="0 -0.085 0" />
 	</xacro:l>
 
 	<!-- RElbow link -->
@@ -137,14 +137,14 @@
 	<xacro:l name="RForeArm" xyz="0 0 0" mass="0.07778">
 		<inertia ixx="2.60679e-05" ixy="-3.24527e-06" ixz="1.18528e-06" iyy="0.000139939" iyz="-1.69766e-07" izz="0.000138518" />
 		<xacro:insert_visualization name="RForeArm" nameMesh="RForeArm" xyz="-0.105 0.11 0" />
-		<xacro:insert_collision name="RForeArm" xyz="0.023 -0.003 0.003" size="0.072 0.051 0.052" />
+		<xacro:insert_collision name="RForeArm" nameMesh="RForeArm" xyz="-0.105 0.11 0" />
 	</xacro:l>
 
 	<!-- LForeArm link -->
 	<xacro:l name="LForeArm" xyz="0 0 0" mass="0.07761">
 		<inertia ixx="2.59898e-05" ixy="3.23152e-06" ixz="1.58221e-06" iyy="0.000139881" iyz="1.39194e-07" izz="0.000138604" />
 		<xacro:insert_visualization name="LForeArm" nameMesh="LForeArm" xyz="-0.105 -0.11 0" />
-		<xacro:insert_collision name="LForeArm" xyz="0.023 0.003 0.003" size="0.072 0.051 0.052" />
+		<xacro:insert_collision name="LForeArm" nameMesh="LForeArm" xyz="-0.105 -0.11 0" />
 	</xacro:l>
 	
 	<!-- Dummy Wrist Links -->
@@ -155,14 +155,14 @@
 	<xacro:l name="RHand" xyz="0 0 0" mass="0.18533">
 		<inertia ixx="7.2451e-05" ixy="1.15466e-07" ixz="-2.87253e-06" iyy="0.000576368" iyz="2.67539e-06" izz="0.000570611" />
 		<xacro:insert_visualization name="RHand" nameMesh="RHand" xyz="-0.105 0.11 0" />
-		<xacro:insert_collision name="RHand" xyz="0.047 0 0.001" size="0.084 0.068 0.063" />
+		<xacro:insert_collision name="RHand" nameMesh="RHand" xyz="-0.105 0.11 0" />
 	</xacro:l>
 
 	<!-- LHand link -->
 	<xacro:l name="LHand" xyz="0 0 0" mass="0.18533">
 		<inertia ixx="7.2451e-05" ixy="1.15466e-07" ixz="-2.87253e-06" iyy="0.000576368" iyz="2.67539e-06" izz="0.000570611" />
 		<xacro:insert_visualization name="LHand" nameMesh="LHand" xyz="-0.105 -0.11  0" />
-		<xacro:insert_collision name="LHand" xyz="0.047 0 0.001" size="0.084 0.068 0.063" />
+		<xacro:insert_collision name="LHand" nameMesh="LHand" xyz="-0.105 -0.11  0" />
 	</xacro:l>
 	
 	<!-- Dummy Gripper Links -->
@@ -173,88 +173,88 @@
 	<xacro:l name="RFinger_1" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_1" nameMesh="RPhalax_1" xyz="-0.23 0.1255 0.004" />
-		<xacro:insert_collision name="RFinger_1" xyz="0 0 0" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_1" nameMesh="RPhalax_1" xyz="-0.23 0.1255 0.004"/>
 	</xacro:l>
 	<xacro:l name="RFinger_4" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_4" nameMesh="RPhalax_4" xyz="-0.23 0.102 0.004" />
-		<xacro:insert_collision name="RFinger_4" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_4" nameMesh="RPhalax_4" xyz="-0.23 0.102 0.004" />
 	</xacro:l>
 	<xacro:l name="RFinger_7" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_7" nameMesh="RPhalax_7" xyz="-0.21 0.112 0.026" />
-		<xacro:insert_collision name="RFinger_7" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_7" nameMesh="RPhalax_7" xyz="-0.21 0.112 0.026" />
 	</xacro:l>
 
 	<xacro:l name="RFinger_2" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_2" nameMesh="RPhalax_2" xyz="-0.245 0.1255 0.004" />
-		<xacro:insert_collision name="RFinger_2" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_2" nameMesh="RPhalax_2" xyz="-0.245 0.1255 0.004" />
 	</xacro:l>
 	<xacro:l name="RFinger_5" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_5" nameMesh="RPhalax_5" xyz="-0.245 0.102 0.004" />
-		<xacro:insert_collision name="RFinger_5" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_5" nameMesh="RPhalax_5" xyz="-0.245 0.102 0.004" />
 	</xacro:l>
 	<xacro:l name="RFinger_8" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_8" nameMesh="RPhalax_8" xyz="-0.217 0.112 0.039" />
-		<xacro:insert_collision name="RFinger_8" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_8" nameMesh="RPhalax_8" xyz="-0.217 0.112 0.039" />
 	</xacro:l>
 
 	<xacro:l name="RFinger_3" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_3" nameMesh="RPhalax_3" xyz="-0.26 0.1255 0.004" />
-		<xacro:insert_collision name="RFinger_3" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_3" nameMesh="RPhalax_3" xyz="-0.26 0.1255 0.004" />
 	</xacro:l>
 	<xacro:l name="RFinger_6" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="RFinger_6" nameMesh="RPhalax_6" xyz="-0.26 0.102 0.004" />
-		<xacro:insert_collision name="RFinger_6" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="RFinger_6" nameMesh="RPhalax_6" xyz="-0.26 0.102 0.004" />
 	</xacro:l>
 
 	<!-- LFinger links -->
 	<xacro:l name="LFinger_1" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_1" nameMesh="LPhalax_1" xyz="-0.23 -0.1255 0.004" />
-		<xacro:insert_collision name="LFinger_1" xyz="0 0 0" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_1" nameMesh="LPhalax_1" xyz="-0.23 -0.1255 0.004" />
 	</xacro:l>
 	<xacro:l name="LFinger_4" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_4" nameMesh="LPhalax_4" xyz="-0.23 -0.102 0.004" />
-		<xacro:insert_collision name="LFinger_4" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_4" nameMesh="LPhalax_4" xyz="-0.23 -0.102 0.004" />
 	</xacro:l>
 	<xacro:l name="LFinger_7" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_7" nameMesh="LPhalax_7" xyz="-0.21 -0.112 0.026" />
-		<xacro:insert_collision name="LFinger_7" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_7" nameMesh="LPhalax_7" xyz="-0.21 -0.112 0.026" />
 	</xacro:l>
 
 	<xacro:l name="LFinger_2" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_2" nameMesh="LPhalax_2" xyz="-0.245 -0.1255 0.004" />
-		<xacro:insert_collision name="LFinger_2" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_2" nameMesh="LPhalax_2" xyz="-0.245 -0.1255 0.004" />
 	</xacro:l>
 	<xacro:l name="LFinger_5" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_5" nameMesh="LPhalax_5" xyz="-0.245 -0.102 0.004" />
-		<xacro:insert_collision name="LFinger_5" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_5" nameMesh="LPhalax_5" xyz="-0.245 -0.102 0.004" />
 	</xacro:l>
 	<xacro:l name="LFinger_8" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_8" nameMesh="LPhalax_8" xyz="-0.217 -0.112 0.039" />
-		<xacro:insert_collision name="LFinger_8" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_8"  nameMesh="LPhalax_8" xyz="-0.217 -0.112 0.039" />
 	</xacro:l>
 
 	<xacro:l name="LFinger_3" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_3" nameMesh="LPhalax_3" xyz="-0.26 -0.1255 0.004" />
-		<xacro:insert_collision name="LFinger_3" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_3"  nameMesh="LPhalax_3" xyz="-0.26 -0.1255 0.004" />
 	</xacro:l>
 	<xacro:l name="LFinger_6" xyz="0 0 0" mass="0.0001">
 		<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 		<xacro:insert_visualization name="LFinger_6" nameMesh="LPhalax_6" xyz="-0.26 -0.102 0.004" />
-		<xacro:insert_collision name="LFinger_6" xyz="0.06 0 -0.019" size="0.04 0.04 0.04" />
+		<xacro:insert_collision name="LFinger_6" nameMesh="LPhalax_6" xyz="-0.26 -0.102 0.004" />
 	</xacro:l>
 	
 	<!-- END ARM LINKS -->
@@ -266,28 +266,28 @@
 	<xacro:l name="RHip" xyz="0 0 0" mass="0.13053">
 		<inertia ixx="3.1073e-05" ixy="5.67164e-07" ixz="6.32483e-06" iyy="0.000133065" iyz="1.97835e-07" izz="0.000119434" />
 		<xacro:insert_visualization name="RHip" nameMesh="RHip" xyz="0.005 0.047 0.184" />
-		<xacro:insert_collision name="RHip" xyz="-0.013 -0 -0.002" size="0.076 0.028 0.049" />
+		<xacro:insert_collision name="RHip" nameMesh="RHip" xyz="0.005 0.047 0.184" />
 	</xacro:l>
 
 	<!-- LHip link -->
 	<xacro:l name="LHip" xyz="0 0 0" mass="0.13053">
 		<inertia ixx="3.10565e-05" ixy="-6.08684e-07" ixz="6.33119e-06" iyy="0.000133052" iyz="-1.99137e-07" izz="0.00011943" />
 		<xacro:insert_visualization name="LHip" nameMesh="LHip" xyz="0.005 -0.047 0.184" />
-		<xacro:insert_collision name="LHip" xyz="-0.013 -0 -0.002" size="0.076 0.028 0.049" />
+		<xacro:insert_collision name="LHip" nameMesh="LHip" xyz="0.005 -0.047 0.184" />
 	</xacro:l>
 
 	<!-- RUpperThigh link -->
 	<xacro:l name="RUpperThigh" xyz="0 0 0" mass="0.07118">
 		<inertia ixx="0.000152729" ixy="-1.54068e-06" ixz="-2.07344e-06" iyy="0.00016221" iyz="-4.50181e-06" izz="8.13137e-05" />
 		<xacro:insert_visualization name="RUpperThigh" nameMesh="RUpperThigh" xyz="0.005 0.047 0.184" />
-		<xacro:insert_collision name="RUpperThigh" xyz="-0.011 -0.008 0.018" size="0.08 0.05 0.056" />
+		<xacro:insert_collision name="RUpperThigh" nameMesh="RUpperThigh" xyz="0.005 0.047 0.184" />
 	</xacro:l>
 
 	<!-- LUpperThigh link -->
 	<xacro:l name="LUpperThigh" xyz="0 0 0" mass="0.06981">
 		<inertia ixx="0.000139598" ixy="1.07922e-06" ixz="-1.76003e-06" iyy="0.000155016" iyz="2.76058e-06" izz="7.55452e-05" />
 		<xacro:insert_visualization name="LUpperThigh" nameMesh="LUpperThigh" xyz="0.005 -0.047 0.184" />
-		<xacro:insert_collision name="LUpperThigh" xyz="-0.011 0.008 0.018" size="0.08 0.05 0.056" />
+		<xacro:insert_collision name="LUpperThigh" nameMesh="LUpperThigh" xyz="0.005 -0.047 0.184" />
 	</xacro:l>
 
 
@@ -295,42 +295,42 @@
 	<xacro:l name="RThigh" xyz="0 0 0" mass="0.38976">
 		<inertia ixx="0.00276508" ixy="-2.05851e-06" ixz="5.67685e-05" iyy="0.00271859" iyz="7.95157e-06" izz="0.000306704" />
 		<xacro:insert_visualization name="RThigh" nameMesh="RThigh" xyz="0.005 0.047 0.184" />
-		<xacro:insert_collision name="RThigh" xyz="0.006 -0.004 -0.057" size="0.095 0.089 0.143" />
+		<xacro:insert_collision name="RThigh" nameMesh="RThigh" xyz="0.005 0.047 0.184" />
 	</xacro:l>
 
 	<!-- LThigh link -->
 	<xacro:l name="LThigh" xyz="0 0 0" mass="0.38968">
 		<inertia ixx="0.0027636" ixy="2.11296e-06" ixz="5.64129e-05" iyy="0.00271679" iyz="-7.91029e-06" izz="0.000306389" />
 		<xacro:insert_visualization name="LThigh" nameMesh="LThigh" xyz="0.005 -0.047 0.184" />
-		<xacro:insert_collision name="LThigh" xyz="0.006 0.004 -0.057" size="0.095 0.089 0.143" />
+		<xacro:insert_collision name="LThigh" nameMesh="LThigh" xyz="0.005 -0.047 0.184" />
 	</xacro:l>
 
 	<!-- RShinebone link -->
 	<xacro:l name="RShinebone" xyz="0 0 0" mass="0.29163">
 		<inertia ixx="0.00189536" ixy="-3.43584e-06" ixz="-2.87418e-05" iyy="0.00184391" iyz="-6.65052e-06" izz="0.000197404" />
 		<xacro:insert_visualization name="RShinebone" nameMesh="RShinebone" xyz="0.005 0.047 0.284" />
-		<xacro:insert_collision name="RShinebone" xyz="0 -0.01 -0.062" size="0.07 0.093 0.1" />
+		<xacro:insert_collision name="RShinebone" nameMesh="RShinebone" xyz="0.005 0.047 0.284" />
 	</xacro:l>
 
 	<!-- LShinebone link -->
 	<xacro:l name="LShinebone" xyz="0 0 0" mass="0.29142">
 		<inertia ixx="0.00189357" ixy="3.60392e-06" ixz="-2.86648e-05" iyy="0.00184465" iyz="7.13012e-06" izz="0.000200683" />
 		<xacro:insert_visualization name="LShinebone" nameMesh="LShinebone" xyz="0.005 -0.047 0.284" />
-		<xacro:insert_collision name="LShinebone" xyz="0 0.01 -0.062" size="0.07 0.093 0.1" />
+		<xacro:insert_collision name="LShinebone" nameMesh="LShinebone" xyz="0.005 -0.047 0.284" />
 	</xacro:l>
 
 	<!-- RAnkle link -->
 	<xacro:l name="RAnkle" xyz="0 0 0" mass="0.13415">
 		<inertia ixx="4.47965e-05" ixy="4.62298e-08" ixz="4.28757e-06" iyy="8.06143e-05" iyz="-2.79856e-07" izz="5.49524e-05" />
 		<xacro:insert_visualization name="RAnkle" nameMesh="RAnkle" xyz="0.005 0.047 0.384" />
-		<xacro:insert_collision name="RAnkle" xyz="0.001 0 0.015" size="0.078 0.028 0.058" />
+		<xacro:insert_collision name="RAnkle" nameMesh="RAnkle" xyz="0.005 0.047 0.384" />
 	</xacro:l>
 
 	<!-- LAnkle link -->
 	<xacro:l name="LAnkle" xyz="0 0 0" mass="0.13416">
 		<inertia ixx="4.48162e-05" ixy="-8.83212e-09" ixz="4.27549e-06" iyy="8.05876e-05" iyz="2.84849e-07" izz="5.49039e-05" />
 		<xacro:insert_visualization name="LAnkle" nameMesh="LAnkle" xyz="0.005 -0.047 0.384" />
-		<xacro:insert_collision name="LAnkle" xyz="0.001 0 0.015" size="0.078 0.028 0.058" />
+		<xacro:insert_collision name="LAnkle" nameMesh="LAnkle" xyz="0.005 -0.047 0.384" />
 	</xacro:l>
 	
 	<!-- Dummy Ankle Links -->
@@ -341,14 +341,14 @@
 	<xacro:l name="RFoot" xyz="0 0 0" mass="0.16171">
 		<inertia ixx="0.000440736" ixy="-7.76163e-06" ixz="6.09349e-06" iyy="0.000917455" iyz="-1.45972e-06" izz="0.000631146" />
 		<xacro:insert_visualization name="RFoot" nameMesh="RFoot" xyz="0.005 0.047 0.384" />
-		<xacro:insert_collision name="RFoot" xyz="0.021 -0.005 -0.013" size="0.161 0.088 0.064" />
+		<xacro:insert_collision name="RFoot" nameMesh="RFoot" xyz="0.005 0.047 0.384" />
 	</xacro:l>
 
 	<!-- LFoot link -->
 	<xacro:l name="LFoot" xyz="0 0 0" mass="0.16184">
 		<inertia ixx="0.000440993" ixy="7.88039e-06" ixz="6.1279e-06" iyy="0.000918708" iyz="1.44233e-06" izz="0.000632096" />
 		<xacro:insert_visualization name="LFoot" nameMesh="LFoot" xyz="0.005 -0.047 0.384" />
-		<xacro:insert_collision name="LFoot" xyz="0.021 0.005 -0.013" size="0.161 0.088 0.064" />
+		<xacro:insert_collision name="LFoot" nameMesh="LFoot" xyz="0.005 -0.047 0.384" />
 	</xacro:l>
 	
 	<!-- Dummy Sole Links -->

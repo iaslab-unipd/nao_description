@@ -52,17 +52,17 @@
 		<visual>
 			<origin xyz="${xyz}" rpy="0 0 0"/>
 			<geometry name="${name}_visual_geom">
-				<mesh filename="package://nao_description/mesh/stl/${nameMesh}.stl" scale="0.1 0.1 0.1"/> 			
+				<mesh filename="package://nao_description/mesh/visual/dae/${nameMesh}.dae" scale="0.1 0.1 0.1"/> 			
 			</geometry>	
 		</visual>
 	</xacro:macro>
 	
 	<!-- Macro for insert a link collision -->
-	<xacro:macro name="insert_collision" params="name xyz size">
+	<xacro:macro name="insert_collision" params="name nameMesh xyz">
 		<collision>
 			<origin xyz="${xyz}" rpy="0 0 0" />
 			<geometry name="${name}_collision_geom">
-				<box size="${size}"/>
+				<mesh filename="package://nao_description/mesh/collision/stl/${nameMesh}.stl" scale="0.1 0.1 0.1"/> 			
 			</geometry>
 		</collision>
 	</xacro:macro>
